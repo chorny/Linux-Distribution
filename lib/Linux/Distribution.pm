@@ -1,6 +1,6 @@
 package Linux::Distribution;
 
-use 5.008005;
+use 5.006000;
 use strict;
 use warnings;
 use Carp qw(carp);
@@ -11,7 +11,7 @@ our @ISA = qw(Exporter);
 
 our @EXPORT_OK = qw( distribution_name );
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 our %release_files = (
     'gentoo-release'        => 'gentoo',
@@ -31,6 +31,8 @@ our %release_files = (
     'conectiva-release'     => 'conectiva',
     'immunix-release'       => 'immunix',
     'tinysofa-release'      => 'tinysofa',
+    'trustix-release'       => 'trustix',
+    'adamantix_version'     => 'adamantix',
     'va-release'            => 'va-linux'
 );
 
@@ -68,7 +70,7 @@ Linux::Distribution - Perl extension to guess on what linux distribution we are 
 
 This is a simple module that try to guess on what linux distribution we are running looking for release's files in /etc.
 
-It currently recognize slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux and gentoo.
+It currently recognize slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix and gentoo.
 
 =head2 EXPORT
 
@@ -83,8 +85,6 @@ Add the capability of recognize the version of the distribution.
 Re Alberto, E<lt>kerberus@accidia.netE<gt>
 
 =head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2005 by Re Alberto
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.5 or,

@@ -1,8 +1,8 @@
-Linux-Distribution version 0.02
+Linux-Distribution version 0.03
 ===============================
 
 This is a module that guess on what kind of linux distribution we are running looking for distro's specific release file into /etc.
-It currently recognize slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux and gentoo.
+It currently recognize slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix and gentoo.
 
 INSTALLATION
 
