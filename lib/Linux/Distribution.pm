@@ -3,7 +3,6 @@ package Linux::Distribution;
 use 5.006000;
 use strict;
 use warnings;
-use Carp qw(carp);
 
 require Exporter;
 
@@ -11,7 +10,7 @@ our @ISA = qw(Exporter);
 
 our @EXPORT_OK = qw( distribution_name );
 
-our $VERSION = '0.03';
+our $VERSION = '0.10';
 
 our %release_files = (
     'gentoo-release'        => 'gentoo',
@@ -33,19 +32,23 @@ our %release_files = (
     'tinysofa-release'      => 'tinysofa',
     'trustix-release'       => 'trustix',
     'adamantix_version'     => 'adamantix',
+    'yoper-release'         => 'yoper',
+    'arch-release'          => 'arch',
+    'libranet_version'      => 'libranet',
     'va-release'            => 'va-linux'
 );
 
-carp('you are trying to use a linux specific module on a different OS')
-  if ( $^O ne 'linux' );
 
-sub distribution_name() {
-    foreach my $test ( keys %release_files ) {
-        if ( -f "/etc/$test" ) {
-            return $release_files{$test};
-        }
+if ($^O ne 'linux') {
+	require Carp;
+	Carp::croak 'you are trying to use a linux specific module on a different OS';
+}
+
+sub distribution_name {
+    foreach (keys %release_files) {
+        return $release_files{$_} if -f "/etc/$_"
     }
-    return '';
+    undef 
 }
 
 1;
@@ -70,7 +73,7 @@ Linux::Distribution - Perl extension to guess on what linux distribution we are 
 
 This is a simple module that try to guess on what linux distribution we are running looking for release's files in /etc.
 
-It currently recognize slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix and gentoo.
+It currently recognize slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix, yoper, arch-linux, libranet and gentoo.
 
 =head2 EXPORT
 
