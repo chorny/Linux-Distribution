@@ -11,7 +11,7 @@ our @ISA = qw(Exporter);
 
 our @EXPORT_OK = qw( distribution_name );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 our %release_files = (
     'gentoo-release'        => 'gentoo',
@@ -27,7 +27,11 @@ our %release_files = (
     'slackware-version'     => 'slackware',
     'slackware-release'     => 'slackware',
     'redhat-release'        => 'redhat',
-    'redhat_version'        => 'redhat'
+    'redhat_version'        => 'redhat',
+    'conectiva-release'     => 'conectiva',
+    'immunix-release'       => 'immunix',
+    'tinysofa-release'      => 'tinysofa',
+    'va-release'            => 'va-linux'
 );
 
 carp('you are trying to use a linux specific module on a different OS')
@@ -64,7 +68,7 @@ Linux::Distribution - Perl extension to guess on what linux distribution we are 
 
 This is a simple module that try to guess on what linux distribution we are running looking for release's files in /etc.
 
-It currently recognize slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake and gentoo.
+It currently recognize slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux and gentoo.
 
 =head2 EXPORT
 

@@ -1,6 +1,26 @@
-Revision history for Perl extension Linux::Distribution.
+------------------------------------------------------------------------
+r5 | kerberus | 2005-03-06 20:27:46 +0100 (Sun, 06 Mar 2005) | 4 lines
 
-0.01  Wed Mar  2 01:00:59 2005
-	- original version; created by h2xs 1.23 with options
-		-A -X -n Linux::Distribution
+Version 0.02.
 
+Updated changelog.
+
+------------------------------------------------------------------------
+r4 | kerberus | 2005-03-06 20:25:16 +0100 (Sun, 06 Mar 2005) | 3 lines
+
+Added support for immunix, conectiva, tinysofa and va-linux.
+
+
+------------------------------------------------------------------------
+r2 | kerberus | 2005-03-06 20:16:36 +0100 (Sun, 06 Mar 2005) | 2 lines
+
+Updated changelog
+
+------------------------------------------------------------------------
+r1 | kerberus | 2005-03-06 20:14:28 +0100 (Sun, 06 Mar 2005) | 4 lines
+
+Version 0.01.
+
+Imported original source tree.
+
+------------------------------------------------------------------------
