@@ -1,0 +1,7 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/Linux-Distribution.t
+lib/Linux/Distribution.pm
+META.yml                                 Module meta-data (added by MakeMaker)

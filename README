@@ -1,0 +1,26 @@
+Linux-Distribution version 0.01
+===============================
+
+This is a module that guess on what kind of linux distribution we are running looking for distro's specific release file into /etc.
+It currently recognize slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake and gentoo.
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module has no dependencies.
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2005 by Re Alberto <kerberus@accidia.net>
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.5 or,
+at your option, any later version of Perl 5 you may have available.
