@@ -1,4 +1,4 @@
-Linux-Distribution version 0.10
+Linux-Distribution version 0.11
 ===============================
 
 This is a module that guess on what kind of linux distribution we are running looking for distro's specific release file into /etc.
@@ -19,7 +19,7 @@ This module has no dependencies.
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2005 by Re Alberto <kerberus@accidia.net>
+Copyright (C) 2005 by Alberto Re <kerberus@accidia.net>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.5 or,

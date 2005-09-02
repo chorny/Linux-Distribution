@@ -5,8 +5,13 @@
 
 # change 'tests => 1' to 'tests => last_test_to_print';
 
-use Test::More tests => 1;
+use Test::More tests => 2;
 BEGIN { use_ok('Linux::Distribution') };
+
+if(isnt(Linux::Distribution::distribution_name(), undef, "Checking your distro...")) {
+    diag("It seems that we are running on " . Linux::Distribution::distribution_name)
+}
+
 
 #########################
 

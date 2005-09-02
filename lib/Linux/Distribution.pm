@@ -10,7 +10,7 @@ our @ISA = qw(Exporter);
 
 our @EXPORT_OK = qw( distribution_name );
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 our %release_files = (
     'gentoo-release'        => 'gentoo',
@@ -46,7 +46,7 @@ if ($^O ne 'linux') {
 
 sub distribution_name {
     foreach (keys %release_files) {
-        return $release_files{$_} if -f "/etc/$_"
+        return $release_files{$_} if -f "/etc/$_" && !-l "/etc/$_"
     }
     undef 
 }
@@ -85,7 +85,7 @@ Add the capability of recognize the version of the distribution.
 
 =head1 AUTHOR
 
-Re Alberto, E<lt>kerberus@accidia.netE<gt>
+Alberto Re, E<lt>kerberus@accidia.netE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
