@@ -1,8 +1,15 @@
-Linux-Distribution version 0.11
+Linux-Distribution version 0.13
 ===============================
 
-This is a module that guess on what kind of linux distribution we are running looking for distro's specific release file into /etc.
-It currently recognize slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix, yoper, arch-linux, libranet and gentoo.
+This is a simple module that tries to guess on what linux distribution we are running by looking
+for release's files in /etc.  It now looks for 'lsb-release' first as that should be the most cor-
+rect and adds ubuntu support.  Secondly, it will look for the distro specific files.
+
+It currently recognizes slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix,
+mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix, yoper, arch-linux, libranet,
+gentoo and ubuntu.
+
+It has function to get the version for debian, suse, redhat, gentoo, slackware and ubuntu(lsb).
 
 INSTALLATION
 
@@ -19,7 +26,7 @@ This module has no dependencies.
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2005 by Alberto Re <kerberus@accidia.net>
+Copyright (C) 2006 by Alberto Re <kerberus@accidia.net>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.5 or,

@@ -1,59 +1,30 @@
-------------------------------------------------------------------------
-r13 | kerberus | 2005-03-10 08:37:58 +0100 (Thu, 10 Mar 2005) | 2 lines
+* 2006-16-01
+Thanks to Judith Lebzelter now the module gets advantage of the LSB's /etc/lsb-release file.
+Added support for Ubuntu and version information retrieval for gentoo, debian, suse, fedora,
+redhat and slackware.
 
+* 2005-03-10
 Added support for yoper, arch-linux and libranet.
 
-------------------------------------------------------------------------
-r12 | kerberus | 2005-03-09 20:04:12 +0100 (Wed, 09 Mar 2005) | 3 lines
-
+* 2005-03-09
 Cleaned code.
 
-
-------------------------------------------------------------------------
-r10 | kerberus | 2005-03-08 12:16:11 +0100 (Tue, 08 Mar 2005) | 1 line
-
-
-------------------------------------------------------------------------
-r9 | kerberus | 2005-03-08 12:15:48 +0100 (Tue, 08 Mar 2005) | 4 lines
-
+* 2005-03-08
 Version 0.03.
-
 Added support for Adamantix and Trustix.
 
-------------------------------------------------------------------------
-r8 | kerberus | 2005-03-07 23:03:50 +0100 (Mon, 07 Mar 2005) | 4 lines
-
+* 2005-03-07
 Reduced needed perl version to 5.6.0.
-
 Removed copyright line from pod documentation.
 
-------------------------------------------------------------------------
-r6 | kerberus | 2005-03-06 20:29:33 +0100 (Sun, 06 Mar 2005) | 1 line
-
-
-------------------------------------------------------------------------
-r5 | kerberus | 2005-03-06 20:27:46 +0100 (Sun, 06 Mar 2005) | 4 lines
-
+* 2005-03-06
 Version 0.02.
 
-Updated changelog.
-
-------------------------------------------------------------------------
-r4 | kerberus | 2005-03-06 20:25:16 +0100 (Sun, 06 Mar 2005) | 3 lines
-
+* 2005-03-06
 Added support for immunix, conectiva, tinysofa and va-linux.
 
-
-------------------------------------------------------------------------
-r2 | kerberus | 2005-03-06 20:16:36 +0100 (Sun, 06 Mar 2005) | 2 lines
-
+* 2005-03-06
 Updated changelog
 
-------------------------------------------------------------------------
-r1 | kerberus | 2005-03-06 20:14:28 +0100 (Sun, 06 Mar 2005) | 4 lines
-
+* 2005-03-06 20:14:28 +0100
 Version 0.01.
-
-Imported original source tree.
-
-------------------------------------------------------------------------

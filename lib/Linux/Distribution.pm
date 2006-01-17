@@ -8,9 +8,11 @@ require Exporter;
 
 our @ISA = qw(Exporter);
 
-our @EXPORT_OK = qw( distribution_name );
+our @EXPORT_OK = qw( distribution_name distribution_version );
 
-our $VERSION = '0.11';
+our $VERSION = '0.13';
+
+our $standard_release_file = 'lsb-release';
 
 our %release_files = (
     'gentoo-release'        => 'gentoo',
@@ -38,17 +40,90 @@ our %release_files = (
     'va-release'            => 'va-linux'
 );
 
+our %version_match = (
+    'gentoo'                => 'Gentoo Base System version (.*)',
+    'debian'                => '(.+)',
+    'suse'                  => 'VERSION = (.*)',
+    'fedora'                => 'Fedora Core release (\d+) \(',
+    'redhat'                => 'Red Hat Linux release (.*) \(',
+    'slackware'             => '^Slackware (.+)$'
+);
+
 
 if ($^O ne 'linux') {
 	require Carp;
 	Carp::croak 'you are trying to use a linux specific module on a different OS';
 }
 
+sub new {
+    my %self = (
+        'DISTRIB_ID'          => '',
+        'DISTRIB_RELEASE'     => '',
+        'DISTRIB_CODENAME'    => '',
+        'DISTRIB_DESCRIPTION' => '',
+        'release_file'        => '',
+        'pattern'             => ''
+    );
+    
+    return bless \%self;
+}
+
 sub distribution_name {
+    my $self = shift || new();
+    my $distro;
+    if ($distro = $self->_get_lsb_info()){
+        $self->{'DISTRIB_ID'} = $distro;
+        return $distro if ($distro = $self->_get_lsb_info());
+    }
     foreach (keys %release_files) {
-        return $release_files{$_} if -f "/etc/$_" && !-l "/etc/$_"
+        if (-f "/etc/$_" && !-l "/etc/$_"){
+            if (-f "/etc/$_" && !-l "/etc/$_"){
+                $self->{'DISTRIB_ID'} = $release_files{$_};
+                $self->{'release_file'} = $_;
+                return $self->{'DISTRIB_ID'};
+            }
+        }
     }
     undef 
+}
+
+sub distribution_version {
+    my $self = shift || new();
+    my $release;
+    return $release if ($release = $self->_get_lsb_info('DISTRIB_RELEASE'));
+    if (! $self->{'DISTRIB_ID'}){
+         $self->distribution_name() or die 'No version because no distro.';
+    }
+    $self->{'pattern'} = $version_match{$self->{'DISTRIB_ID'}};
+    return $self->_get_file_info();
+    undef 
+}
+
+sub _get_lsb_info {
+    my $self = shift;
+    my $field = shift || "DISTRIB_ID";
+    my $tmp = $self->{'release_file'};
+    if ( -f '/etc/' . $standard_release_file ) {
+        $self->{'release_file'} = $standard_release_file;
+        $self->{'pattern'} = $field . '=(.+)';
+        my $info = $self->_get_file_info();
+        return $info if $info;
+    } 
+    $self->{'release_file'} = $tmp;
+    $self->{'pattern'} = '';
+    undef;
+}
+
+sub _get_file_info {
+    my $self = shift;
+    open FH, '/etc/' . $self->{'release_file'} or die 'Cannot open file: /etc/' . $self->{'release_file'};
+    my $info = '';
+    while (<FH>){
+        chomp $_;
+        ($info) = $_ =~ m/$self->{'pattern'}/;
+        return "\L$info" if $info;
+    }
+    undef;
 }
 
 1;
@@ -57,23 +132,38 @@ __END__
 
 =head1 NAME
 
-Linux::Distribution - Perl extension to guess on what linux distribution we are running on.
+Linux::Distribution - Perl extension to guess on which Linux distribution we are running.
 
 =head1 SYNOPSIS
 
-  use Linux::Distribution qw(distribution_name);
+  use Linux::Distribution qw(distribution_name distribution_version);
 
   if(my $distro = distribution_name) {
-  	print "you are running $distro\n";
+        my $version = distribution_version();
+  	print "you are running $distro, version $version\n";
   } else {
   	print "distribution unknown\n";
   }
 
+  Or else do it OO:
+
+  use Linux::Distribution qw(distribution_name distribution_version);
+
+  $linux = new Linux::Distribution;
+  if(my $distro = $linux->distribution_name()) {
+        my $version = $linux->distribution_version();
+        print "you are running $distro, version $version\n";
+  } else {
+        print "distribution unknown\n";
+  }
+
 =head1 DESCRIPTION
 
-This is a simple module that try to guess on what linux distribution we are running looking for release's files in /etc.
+This is a simple module that tries to guess on what linux distribution we are running by looking for release's files in /etc.  It now looks for 'lsb-release' first as that should be the most correct and adds ubuntu support.  Secondly, it will look for the distro specific files.
 
-It currently recognize slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix, yoper, arch-linux, libranet and gentoo.
+It currently recognizes slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix, yoper, arch-linux, libranet, gentoo and ubuntu.
+
+It has function to get the version for debian, suse, redhat, gentoo, slackware and ubuntu(lsb). People running unsupported distro's are greatly encouraged to submit patches :-)
 
 =head2 EXPORT
 
@@ -81,11 +171,12 @@ None by default.
 
 =head1 TODO
 
-Add the capability of recognize the version of the distribution.
+Add the capability of recognize the version of the distribution for all recognized distributions.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
-Alberto Re, E<lt>kerberus@accidia.netE<gt>
+Alberto Re, E<lt>alberto@accidia.netE<gt>
+Judith Lebzelter, E<lt>judith@osdl.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
