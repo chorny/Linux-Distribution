@@ -10,7 +10,7 @@ our @ISA = qw(Exporter);
 
 our @EXPORT_OK = qw( distribution_name distribution_version );
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 our $standard_release_file = 'lsb-release';
 
@@ -27,6 +27,7 @@ our %release_files = (
     'yellowdog-release'     => 'yellowdog',
     'slackware-version'     => 'slackware',
     'slackware-release'     => 'slackware',
+    'redflag-release'       => 'redflag',
     'redhat-release'        => 'redhat',
     'redhat_version'        => 'redhat',
     'conectiva-release'     => 'conectiva',
@@ -45,6 +46,7 @@ our %version_match = (
     'debian'                => '(.+)',
     'suse'                  => 'VERSION = (.*)',
     'fedora'                => 'Fedora Core release (\d+) \(',
+    'redflag'               => 'Red Flag (?:Desktop|Linux) (?:release |\()(.*?)(?: \(.+)?\)',
     'redhat'                => 'Red Hat Linux release (.*) \(',
     'slackware'             => '^Slackware (.+)$'
 );
@@ -72,8 +74,7 @@ sub distribution_name {
     my $self = shift || new();
     my $distro;
     if ($distro = $self->_get_lsb_info()){
-        $self->{'DISTRIB_ID'} = $distro;
-        return $distro if ($distro = $self->_get_lsb_info());
+        return $distro if ($distro);
     }
     foreach (keys %release_files) {
         if (-f "/etc/$_" && !-l "/etc/$_"){
@@ -95,19 +96,23 @@ sub distribution_version {
          $self->distribution_name() or die 'No version because no distro.';
     }
     $self->{'pattern'} = $version_match{$self->{'DISTRIB_ID'}};
-    return $self->_get_file_info();
-    undef 
+    $release = $self->_get_file_info();
+    $self->{'DISTRIB_RELEASE'} = $release;
+    return $release;
 }
 
 sub _get_lsb_info {
     my $self = shift;
-    my $field = shift || "DISTRIB_ID";
+    my $field = shift || 'DISTRIB_ID';
     my $tmp = $self->{'release_file'};
-    if ( -f '/etc/' . $standard_release_file ) {
+    if ( -r '/etc/' . $standard_release_file ) {
         $self->{'release_file'} = $standard_release_file;
         $self->{'pattern'} = $field . '=(.+)';
         my $info = $self->_get_file_info();
-        return $info if $info;
+        if ($info){
+            $self->{$field} = $info;
+            return $info
+        }
     } 
     $self->{'release_file'} = $tmp;
     $self->{'pattern'} = '';
@@ -161,9 +166,9 @@ Linux::Distribution - Perl extension to guess on which Linux distribution we are
 
 This is a simple module that tries to guess on what linux distribution we are running by looking for release's files in /etc.  It now looks for 'lsb-release' first as that should be the most correct and adds ubuntu support.  Secondly, it will look for the distro specific files.
 
-It currently recognizes slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix, yoper, arch-linux, libranet, gentoo and ubuntu.
+It currently recognizes slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix, yoper, arch-linux, libranet, gentoo, ubuntu and redflag.
 
-It has function to get the version for debian, suse, redhat, gentoo, slackware and ubuntu(lsb). People running unsupported distro's are greatly encouraged to submit patches :-)
+It has function to get the version for debian, suse, redhat, gentoo, slackware, redflag and ubuntu(lsb). People running unsupported distro's are greatly encouraged to submit patches :-)
 
 =head2 EXPORT
 

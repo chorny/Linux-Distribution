@@ -1,3 +1,7 @@
+* 2005-16-02
+
+Added support for Redflag.
+
 * 2006-16-01
 Thanks to Judith Lebzelter now the module gets advantage of the LSB's /etc/lsb-release file.
 Added support for Ubuntu and version information retrieval for gentoo, debian, suse, fedora,

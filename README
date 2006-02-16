@@ -1,4 +1,4 @@
-Linux-Distribution version 0.13
+Linux-Distribution version 0.14
 ===============================
 
 This is a simple module that tries to guess on what linux distribution we are running by looking
@@ -7,9 +7,10 @@ rect and adds ubuntu support.  Secondly, it will look for the distro specific fi
 
 It currently recognizes slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix,
 mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix, yoper, arch-linux, libranet,
-gentoo and ubuntu.
+gentoo, ubuntu and redflag.
 
-It has function to get the version for debian, suse, redhat, gentoo, slackware and ubuntu(lsb).
+It has function to get the version for debian, suse, redhat, gentoo, slackware, redflag and
+ubuntu(lsb). People running unsupported distro's are greatly encouraged to submit patches :-)
 
 INSTALLATION
 
@@ -26,7 +27,7 @@ This module has no dependencies.
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2006 by Alberto Re <kerberus@accidia.net>
+Copyright (C) 2006 by Alberto Re <alberto@accidia.net>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.5 or,

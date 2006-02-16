@@ -8,8 +8,8 @@
 use Test::More tests => 2;
 BEGIN { use_ok('Linux::Distribution') };
 
-if(isnt(Linux::Distribution::distribution_name(), undef, "Checking your distro...")) {
-    diag("It seems that we are running on " . Linux::Distribution::distribution_name)
+if(isnt(Linux::Distribution::distribution_name(), undef, 'Checking your distro...')) {
+    diag('It seems that we are running on '.Linux::Distribution::distribution_name.' version '.(Linux::Distribution::distribution_version || 'unknown'))
 }
 
 
