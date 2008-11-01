@@ -1,10 +1,20 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         Linux-Distribution
-version:      0.14
-version_from: lib/Linux/Distribution.pm
-installdirs:  site
+--- #YAML:1.0
+name:               Linux-Distribution
+version:            0.14_01
+abstract:           Perl extension to guess on which Linux distribution we are running.
+author:
+    - Alberto Re <alberto@accidia.net>
+license:            perl
+distribution_type:  module
+configure_requires:
+    ExtUtils::MakeMaker:  0
 requires:
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.17
+    perl:  5.006
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.48
+meta-spec:
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4

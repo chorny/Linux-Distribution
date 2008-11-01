@@ -9,7 +9,15 @@ use Test::More tests => 2;
 BEGIN { use_ok('Linux::Distribution') };
 
 if(isnt(Linux::Distribution::distribution_name(), undef, 'Checking your distro...')) {
-    diag('It seems that we are running on '.Linux::Distribution::distribution_name.' version '.(Linux::Distribution::distribution_version || 'unknown'))
+  diag('It seems that we are running on '.Linux::Distribution::distribution_name.' version '.(Linux::Distribution::distribution_version || 'unknown'))
+} else {
+  diag ('Please report your Linux dist to dist maintainer');
+  if (-e '/etc/lsb-release') {
+    diag ('lsb-release exists') ;
+    open my $fh,'<','/etc/lsb-release';
+    my $content=join('',<$fh>);
+    diag($content);
+  }
 }
 
 

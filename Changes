@@ -1,8 +1,17 @@
-* 2005-16-02
+* 2008-11-02 version 0.14_01
+
+Remove bareword filehandles and 2-arg open
+Will not install if not on Linux
+Modernize Makefile.PL
+Fix for 5.10
+Pardus support (by BURAK, RT#27357)
+Fix Fedora recognition (reported by sagarshahATsofthome.net, RT#11996)
+
+* 2005-02-16
 
 Added support for Redflag.
 
-* 2006-16-01
+* 2006-01-16
 Thanks to Judith Lebzelter now the module gets advantage of the LSB's /etc/lsb-release file.
 Added support for Ubuntu and version information retrieval for gentoo, debian, suse, fedora,
 redhat and slackware.

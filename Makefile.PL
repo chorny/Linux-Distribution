@@ -1,12 +1,14 @@
 use 5.006000;
 use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
+unless (lc $^O eq "linux") {
+    die "OS unsupported\n";
+}
 WriteMakefile(
     NAME              => 'Linux::Distribution',
     VERSION_FROM      => 'lib/Linux/Distribution.pm', # finds $VERSION
     PREREQ_PM         => {}, # e.g., Module::Name => 1.1
-    ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/Linux/Distribution.pm', # retrieve abstract from module
-       AUTHOR         => 'Alberto Re <alberto@accidia.net>') : ()),
+    ABSTRACT_FROM  => 'lib/Linux/Distribution.pm', # retrieve abstract from module
+    AUTHOR         => 'Alberto Re <alberto@accidia.net>',
+    ($ExtUtils::MakeMaker::VERSION ge '6.48'? 
+     ('LICENSE'	=> 'perl', 'MIN_PERL_VERSION' => 5.006,) : ()),
 );
