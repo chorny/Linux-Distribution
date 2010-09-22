@@ -43,7 +43,7 @@ our %release_files = (
 );
 
 our %version_match = (
-    'gentoo'                => 'Gentoo Base System version (.*)',
+    'gentoo'                => 'Gentoo Base System release (.*)',
     'debian'                => '(.+)',
     'suse'                  => 'VERSION = (.*)',
     'fedora'                => 'Fedora Core release (\d+) \(',

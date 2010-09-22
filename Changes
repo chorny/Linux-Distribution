@@ -1,3 +1,5 @@
+Fixed version detection for Gentoo
+
 * 2008-11-02 version 0.14_01
 
 Remove bareword filehandles and 2-arg open
