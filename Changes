@@ -1,5 +1,8 @@
+* 2010-12-05 version 0.20
+
 Fixed version detection for Gentoo
 CentOS detection (modified patch from XSAWYERX)
+Start writing distribution-oriented tests
 
 * 2008-11-02 version 0.14_01
 

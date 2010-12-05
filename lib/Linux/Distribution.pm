@@ -164,7 +164,7 @@ __END__
 
 =head1 NAME
 
-Linux::Distribution - Perl extension to guess on which Linux distribution we are running.
+Linux::Distribution - Perl extension to detect on which Linux distribution we are running.
 
 =head1 SYNOPSIS
 
@@ -181,7 +181,7 @@ Linux::Distribution - Perl extension to guess on which Linux distribution we are
 
   use Linux::Distribution qw(distribution_name distribution_version);
 
-  $linux = Linux::Distribution->new;
+  my $linux = Linux::Distribution->new;
   if(my $distro = $linux->distribution_name()) {
         my $version = $linux->distribution_version();
         print "you are running $distro, version $version\n";
@@ -207,6 +207,7 @@ Add the capability of recognize the version of the distribution for all recogniz
 
 =head1 AUTHORS
 
+Alexandr Ciornii E<lt>alexchorny@gmail.comE<gt>, L<http://chorny.net>
 Alberto Re, E<lt>alberto@accidia.netE<gt>
 Judith Lebzelter, E<lt>judith@osdl.orgE<gt>
 
