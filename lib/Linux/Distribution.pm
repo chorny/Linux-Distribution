@@ -12,6 +12,7 @@ our @EXPORT_OK = qw( distribution_name distribution_version );
 
 our $VERSION = '0.14_01';
 
+our $release_files_directory='/etc';
 our $standard_release_file = 'lsb-release';
 
 our %release_files = (
@@ -51,6 +52,7 @@ our %version_match = (
     'redhat'                => 'Red Hat Linux release (.*) \(',
     'slackware'             => '^Slackware (.+)$',
     'pardus'                => '^Pardus (.+)$',
+    'centos'                => '^CentOS release (.+)(?:\s\(Final\))',
 );
 
 
@@ -80,8 +82,8 @@ sub distribution_name {
     }
 
     foreach ('fedora-release') {
-        if (-f "/etc/$_" && !-l "/etc/$_"){
-            if (-f "/etc/$_" && !-l "/etc/$_"){
+        if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
+            if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
                 $self->{'DISTRIB_ID'} = $release_files{$_};
                 $self->{'release_file'} = $_;
                 return $self->{'DISTRIB_ID'};
@@ -90,10 +92,21 @@ sub distribution_name {
     }
 
     foreach (keys %release_files) {
-        if (-f "/etc/$_" && !-l "/etc/$_"){
-            if (-f "/etc/$_" && !-l "/etc/$_"){
-                $self->{'DISTRIB_ID'} = $release_files{$_};
+        if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
+            if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
+                if ( $release_files{$_} eq 'redhat' ) {
+                    $self->{'pattern'} = $version_match{'centos'};
+                    $self->{'release_file'}='redhat-release';
+                    if ( $self->_get_file_info() ) {
+                        $self->{'DISTRIB_ID'} = 'centos';
+                        $self->{'release_file'} = $_;
+                        return $self->{'DISTRIB_ID'};
+                    } else {
+                        $self->{'pattern'}='';
+                    }
+                }
                 $self->{'release_file'} = $_;
+                $self->{'DISTRIB_ID'} = $release_files{$_};
                 return $self->{'DISTRIB_ID'};
             }
         }
@@ -118,7 +131,7 @@ sub _get_lsb_info {
     my $self = shift;
     my $field = shift || 'DISTRIB_ID';
     my $tmp = $self->{'release_file'};
-    if ( -r '/etc/' . $standard_release_file ) {
+    if ( -r "$release_files_directory/" . $standard_release_file ) {
         $self->{'release_file'} = $standard_release_file;
         $self->{'pattern'} = $field . '=(.+)';
         my $info = $self->_get_file_info();
@@ -134,8 +147,9 @@ sub _get_lsb_info {
 
 sub _get_file_info {
     my $self = shift;
-    open my $fh, '<', '/etc/' . $self->{'release_file'} or die 'Cannot open file: /etc/' . $self->{'release_file'};
+    open my $fh, '<', "$release_files_directory/" . $self->{'release_file'} or die 'Cannot open file: '.$release_files_directory.'/' . $self->{'release_file'};
     my $info = '';
+    local $_;
     while (<$fh>){
         chomp $_;
         ($info) = $_ =~ m/$self->{'pattern'}/;
