@@ -18,6 +18,7 @@ our $standard_release_file = 'lsb-release';
 our %release_files = (
     'gentoo-release'        => 'gentoo',
     'fedora-release'        => 'fedora',
+    'centos-release'        => 'centos',
     'turbolinux-release'    => 'turbolinux',
     'mandrake-release'      => 'mandrake',
     'mandrakelinux-release' => 'mandrakelinux',
@@ -52,7 +53,7 @@ our %version_match = (
     'redhat'                => 'Red Hat Linux release (.*) \(',
     'slackware'             => '^Slackware (.+)$',
     'pardus'                => '^Pardus (.+)$',
-    'centos'                => '^CentOS release (.+)(?:\s\(Final\))',
+    'centos'                => '^CentOS(?: Linux)? release (.+)(?:\s\(Final\))',
 );
 
 
