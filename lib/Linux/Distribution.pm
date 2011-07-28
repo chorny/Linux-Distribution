@@ -54,6 +54,7 @@ our %version_match = (
     'slackware'             => '^Slackware (.+)$',
     'pardus'                => '^Pardus (.+)$',
     'centos'                => '^CentOS(?: Linux)? release (.+)(?:\s\(Final\))',
+    'scientific'            => '^Scientific Linux release (.+) \(',
 );
 
 
@@ -96,15 +97,16 @@ sub distribution_name {
         if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
             if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
                 if ( $release_files{$_} eq 'redhat' ) {
-                    $self->{'pattern'} = $version_match{'centos'};
-                    $self->{'release_file'}='redhat-release';
-                    if ( $self->_get_file_info() ) {
-                        $self->{'DISTRIB_ID'} = 'centos';
-                        $self->{'release_file'} = $_;
-                        return $self->{'DISTRIB_ID'};
-                    } else {
-                        $self->{'pattern'}='';
+                    foreach my $rhel_deriv ('centos','scientific',) {
+                        $self->{'pattern'} = $version_match{$rhel_deriv};
+                        $self->{'release_file'}='redhat-release';
+                        if ( $self->_get_file_info() ) {
+                            $self->{'DISTRIB_ID'} = $rhel_deriv;
+                            $self->{'release_file'} = $_;
+                            return $self->{'DISTRIB_ID'};
+                        }
                     }
+                    $self->{'pattern'}='';
                 }
                 $self->{'release_file'} = $_;
                 $self->{'DISTRIB_ID'} = $release_files{$_};
