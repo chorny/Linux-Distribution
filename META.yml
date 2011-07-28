@@ -1,9 +1,10 @@
 --- #YAML:1.0
 name:               Linux-Distribution
-version:            0.14_01
-abstract:           Perl extension to guess on which Linux distribution we are running.
+version:            0.21
+abstract:           Perl extension to detect on which Linux distribution we are running.
 author:
     - Alberto Re <alberto@accidia.net>
+    - Alexandr Ciornii <alexchorny@gmail.com>
 license:            perl
 distribution_type:  module
 configure_requires:

@@ -1,3 +1,9 @@
+* 2011-??-?? version 0.21
+
+Fixed version detection for Fedora (reported by tlhackqueATyahoo.com, RT#69671)
+Fixed OS and version detection for CentOS6 (RT#69847)
+Added version detection for Scientific Linux
+
 * 2010-12-05 version 0.20
 
 Fixed version detection for Gentoo

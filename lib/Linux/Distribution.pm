@@ -10,7 +10,7 @@ our @ISA = qw(Exporter);
 
 our @EXPORT_OK = qw( distribution_name distribution_version );
 
-our $VERSION = '0.14_01';
+our $VERSION = '0.21';
 
 our $release_files_directory='/etc';
 our $standard_release_file = 'lsb-release';
@@ -196,9 +196,9 @@ Linux::Distribution - Perl extension to detect on which Linux distribution we ar
 
 This is a simple module that tries to guess on what linux distribution we are running by looking for release's files in /etc.  It now looks for 'lsb-release' first as that should be the most correct and adds ubuntu support.  Secondly, it will look for the distro specific files.
 
-It currently recognizes slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix, yoper, arch-linux, libranet, gentoo, ubuntu and redflag.
+It currently recognizes slackware, debian, suse, fedora, redhat, turbolinux, yellowdog, knoppix, mandrake, conectiva, immunix, tinysofa, va-linux, trustix, adamantix, yoper, arch-linux, libranet, gentoo, ubuntu, scientific and redflag.
 
-It has function to get the version for debian, suse, fedora, redhat, gentoo, slackware, redflag and ubuntu(lsb). People running unsupported distro's are greatly encouraged to submit patches :-)
+It has function to get the version for debian, suse, fedora, redhat, gentoo, slackware, scientific, redflag and ubuntu(lsb). People running unsupported distro's are greatly encouraged to submit patches :-)
 
 =head2 EXPORT
 

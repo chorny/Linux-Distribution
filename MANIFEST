@@ -3,5 +3,17 @@ Makefile.PL
 MANIFEST
 README
 t/Linux-Distribution.t
+t/centos.t
+t/centos6.t
+t/fedora15.t
+t/scientific6.t
+t/centos/files
+t/centos/redhat-release
+t/centos6/files
+t/centos6/centos-release
+t/fedora15/fedora-release
+t/fedora15/files
+t/scientific6/redhat-release
+t/scientific6/files
 lib/Linux/Distribution.pm
 META.yml                                 Module meta-data (added by MakeMaker)
