@@ -50,7 +50,7 @@ our %version_match = (
     'suse'                  => 'VERSION = (.*)',
     'fedora'                => 'Fedora(?: Core)? release (\d+) \(',
     'redflag'               => 'Red Flag (?:Desktop|Linux) (?:release |\()(.*?)(?: \(.+)?\)',
-    'redhat'                => 'Red Hat Linux release (.*) \(',
+    'redhat'                => 'Red Hat(?: Enterprise)? Linux(?: Server)? release (.*) \(',
     'slackware'             => '^Slackware (.+)$',
     'pardus'                => '^Pardus (.+)$',
     'centos'                => '^CentOS(?: Linux)? release (.+)(?:\s\(Final\))',
