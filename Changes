@@ -1,5 +1,6 @@
 * 2011-??-?? version 0.21
 
+Added OS and version detection for Oracle Enterprise Linux
 Fixed version detection for Fedora (reported by tlhackqueATyahoo.com, RT#69671)
 Fixed OS and version detection for CentOS6 (RT#69847)
 Added version detection for Scientific Linux
