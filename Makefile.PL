@@ -1,7 +1,7 @@
 use 5.006000;
 use ExtUtils::MakeMaker;
 unless (lc $^O eq "linux") {
-    #die "OS unsupported\n";
+    die "OS unsupported\n";
 }
 WriteMakefile(
     NAME              => 'Linux::Distribution',
