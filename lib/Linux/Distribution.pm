@@ -138,7 +138,7 @@ sub _get_lsb_info {
     my $tmp = $self->{'release_file'};
     if ( -r "$release_files_directory/" . $standard_release_file ) {
         $self->{'release_file'} = $standard_release_file;
-        $self->{'pattern'} = $field . '=(?:")?(.+)(?:")?';
+        $self->{'pattern'} = $field . '=(?:")?(.+?)(?:")?';
         my $info = $self->_get_file_info();
         if ($info){
             $self->{$field} = $info;
