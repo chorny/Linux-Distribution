@@ -1,3 +1,7 @@
+* 2016-??-?? version 0.24
+
+Split out version detection for 'suse' to 'sles' and 'opensuse'
+
 * 2015-06-20  version 0.23
 
 CloudLinux added
