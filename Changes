@@ -1,5 +1,6 @@
 * 2013-??-?? version 0.22
 
+Split out version detection for 'suse' to 'sles' and 'opensuse'
 Added OS and version detection for Amazon Linux. (RT#88412)
 
 * 2011-02-23 version 0.21
