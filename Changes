@@ -2,7 +2,7 @@
 
 Added OS and version detection for Amazon Linux. (RT#88412)
 
-* 2011-02-23 version 0.21
+* 2012-02-23 version 0.21
 
 Added OS and version detection for Oracle Enterprise Linux
 Fixed version detection for Fedora (reported by tlhackqueATyahoo.com, RT#69671)
