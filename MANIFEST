@@ -19,6 +19,9 @@ t/centos6/files
 t/centos7.t
 t/centos7/centos-release
 t/centos7/files
+t/debian7.t
+t/debian7/debian_version
+t/debian7/files
 t/fedora15.t
 t/fedora15/fedora-release
 t/fedora15/files
