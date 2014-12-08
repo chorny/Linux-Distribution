@@ -31,6 +31,9 @@ t/oel6/redhat-release
 t/rhel6.t
 t/rhel6/files
 t/rhel6/redhat-release
+t/rhel7.t
+t/rhel7/files
+t/rhel7/redhat-release
 t/scientific6.t
 t/scientific6/files
 t/scientific6/redhat-release
