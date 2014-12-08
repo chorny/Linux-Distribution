@@ -56,7 +56,7 @@ our %version_match = (
     'oracle enterprise linux' => 'Enterprise Linux Server release (.+) \(',
     'slackware'             => '^Slackware (.+)$',
     'pardus'                => '^Pardus (.+)$',
-    'centos'                => '^CentOS(?: Linux)? release (.+)(?:\s\(Final\))',
+    'centos'                => '^CentOS(?: Linux)? release (.+) \(',
     'scientific'            => '^Scientific Linux release (.+) \(',
     'amazon'                => 'Amazon Linux AMI release (.+)$',
 );

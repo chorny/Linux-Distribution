@@ -1,16 +1,24 @@
+.travis.yml
 Build.PL
 Changes
 lib/Linux/Distribution.pm
 Makefile.PL
 MANIFEST
+META.json
 META.yml			Module meta-data (added by MakeMaker)
 README
+t/amazon.t
+t/amazon/files
+t/amazon/system-release
 t/centos.t
 t/centos/files
 t/centos/redhat-release
 t/centos6.t
 t/centos6/centos-release
 t/centos6/files
+t/centos7.t
+t/centos7/centos-release
+t/centos7/files
 t/fedora15.t
 t/fedora15/fedora-release
 t/fedora15/files
@@ -26,4 +34,3 @@ t/rhel6/redhat-release
 t/scientific6.t
 t/scientific6/files
 t/scientific6/redhat-release
-META.json
