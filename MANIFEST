@@ -40,3 +40,7 @@ t/rhel7/redhat-release
 t/scientific6.t
 t/scientific6/files
 t/scientific6/redhat-release
+t/ubuntu1404.t
+t/ubuntu1404/debian_version
+t/ubuntu1404/files
+t/ubuntu1404/lsb-release
