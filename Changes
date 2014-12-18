@@ -1,4 +1,4 @@
-* 2014-12-08 version 0.22
+* 2014-12-18 version 0.22 by Michiel Beijen
 
 Fixed version detection fort CentOS 7 (RT#97638)
 Added OS and version detection for Amazon Linux. (RT#88412)

@@ -1,4 +1,3 @@
-.travis.yml
 Build.PL
 Changes
 lib/Linux/Distribution.pm
