@@ -1,10 +1,11 @@
 Build.PL
 Changes
+hacking
 lib/Linux/Distribution.pm
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 META.json
-META.yml			Module meta-data (added by MakeMaker)
+META.yml
 README
 t/amazon.t
 t/amazon/files
@@ -18,6 +19,11 @@ t/centos6/files
 t/centos7.t
 t/centos7/centos-release
 t/centos7/files
+t/cloudlinux.t
+t/CloudLinux/CloudLinux-release
+t/CloudLinux/files
+t/CloudLinux/lsb_release-output
+t/CloudLinux/redhat-release
 t/debian7.t
 t/debian7/debian_version
 t/debian7/files

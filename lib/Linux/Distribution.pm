@@ -44,6 +44,7 @@ our %release_files = (
     'va-release'            => 'va-linux',
     'pardus-release'        => 'pardus',
     'system-release'        => 'amazon',
+    'CloudLinux-release'    => 'CloudLinux',
 );
 
 our %version_match = (
@@ -59,6 +60,7 @@ our %version_match = (
     'centos'                => '^CentOS(?: Linux)? release (.+) \(',
     'scientific'            => '^Scientific Linux release (.+) \(',
     'amazon'                => 'Amazon Linux AMI release (.+)$',
+    'CloudLinux'            => 'CloudLinux Server release (\S+)'
 );
 
 
@@ -87,7 +89,7 @@ sub distribution_name {
         return $distro if ($distro);
     }
 
-    foreach (qw(enterprise-release fedora-release)) {
+    foreach (qw(enterprise-release fedora-release CloudLinux-release)) {
         if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
             if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
                 $self->{'DISTRIB_ID'} = $release_files{$_};
