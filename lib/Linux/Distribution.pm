@@ -10,7 +10,7 @@ our @ISA = qw(Exporter);
 
 our @EXPORT_OK = qw( distribution_name distribution_version );
 
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 
 our $release_files_directory='/etc';
 our $standard_release_file = 'lsb-release';

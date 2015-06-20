@@ -1,4 +1,4 @@
-Linux-Distribution version 0.22
+Linux-Distribution version 0.23
 ===============================
 
 This is a simple module that tries to detect on what linux distribution we are running by looking
@@ -28,7 +28,7 @@ This module has no dependencies.
 COPYRIGHT AND LICENCE
 
 Copyright (C) 2006 by Alberto Re <alberto@accidia.net>
-(c) 2008-2012 Alexandr Ciornii <alexchorny@gmail.com>
+(c) 2008-2015 Alexandr Ciornii <alexchorny@gmail.com>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.5 or,

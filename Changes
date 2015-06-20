@@ -1,4 +1,7 @@
+* 2015-06-20  version 0.23
+
 CloudLinux added
+Handle fields in lsb-release being quoted
 
 * 2014-12-18 version 0.22 by Michiel Beijen
 

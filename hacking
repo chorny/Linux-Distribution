@@ -5,4 +5,4 @@ To add new Linux distribution, please send following files:
 
 and output of:
 uname -a
-lsb_release
+lsb_release -a

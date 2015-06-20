@@ -2,7 +2,7 @@ use strict;
 use Module::Build;
 #created by eumm-migrate.pl
 
-unless (lc $^O eq "linux") {
+unless (lc $^O eq "linux" || -d '.git') {
     die "OS unsupported\n";
 }
 
