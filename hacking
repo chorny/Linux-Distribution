@@ -1,5 +1,6 @@
 To add new Linux distribution, please send following files:
 /etc/lsb-release
+/etc/os-release (or /usr/lib/os-release)
 /etc/*-release
 /etc/*_version
 
