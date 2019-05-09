@@ -53,7 +53,7 @@ our %version_match = (
     'suse'                  => 'VERSION = (.*)',
     'fedora'                => 'Fedora(?: Core)? release (\d+) \(',
     'redflag'               => 'Red Flag (?:Desktop|Linux) (?:release |\()(.*?)(?: \(.+)?\)',
-    'redhat'                => 'Red Hat(?: Enterprise)? Linux(?: Server)? release (.*) \(',
+    'redhat'                => 'Red Hat(?: Enterprise)? Linux(?: Server| Workstation)? release (.*) \(',
     'oracle enterprise linux' => 'Enterprise Linux Server release (.+) \(',
     'slackware'             => '^Slackware (.+)$',
     'pardus'                => '^Pardus (.+)$',
