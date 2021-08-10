@@ -1,0 +1,5 @@
+exists:
+rocky-release
+do not:
+redhat_version
+lsb-release
