@@ -46,6 +46,7 @@ our %release_files = (
     'system-release'        => 'amazon',
     'CloudLinux-release'    => 'CloudLinux',
     'almalinux-release'     => 'almalinux',
+    'rocky-release'         => 'rocky',
 );
 
 our %version_match = (
@@ -63,6 +64,7 @@ our %version_match = (
     'amazon'                => 'Amazon Linux AMI release (.+)$',
     'CloudLinux'            => 'CloudLinux Server release (\S+)',
     'almalinux'             => 'AlmaLinux release (.+) \(',
+    'rocky'                 => 'Rocky Linux release (.+) \(',
 );
 
 
@@ -105,7 +107,7 @@ sub distribution_name {
         if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
             if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
                 if ( $release_files{$_} eq 'redhat' ) {
-                    foreach my $rhel_deriv ('centos','scientific', 'almalinux') {
+                    foreach my $rhel_deriv ('centos','scientific','almalinux','rocky',) {
                         $self->{'pattern'} = $version_match{$rhel_deriv};
                         $self->{'release_file'}='redhat-release';
                         if ( $self->_get_file_info() ) {
