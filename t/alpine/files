@@ -1,0 +1,5 @@
+exists:
+alpine-release
+do not:
+redhat_version
+lsb-release
