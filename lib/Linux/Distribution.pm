@@ -91,33 +91,29 @@ sub distribution_name {
 
     foreach (qw(enterprise-release fedora-release CloudLinux-release)) {
         if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
-            if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
-                $self->{'DISTRIB_ID'} = $release_files{$_};
-                $self->{'release_file'} = $_;
-                return $self->{'DISTRIB_ID'};
-            }
+            $self->{'DISTRIB_ID'} = $release_files{$_};
+            $self->{'release_file'} = $_;
+            return $self->{'DISTRIB_ID'};
         }
     }
 
     foreach (keys %release_files) {
         if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
-            if (-f "$release_files_directory/$_" && !-l "$release_files_directory/$_"){
-                if ( $release_files{$_} eq 'redhat' ) {
-                    foreach my $rhel_deriv ('centos','scientific',) {
-                        $self->{'pattern'} = $version_match{$rhel_deriv};
-                        $self->{'release_file'}='redhat-release';
-                        if ( $self->_get_file_info() ) {
-                            $self->{'DISTRIB_ID'} = $rhel_deriv;
-                            $self->{'release_file'} = $_;
-                            return $self->{'DISTRIB_ID'};
-                        }
+            if ( $release_files{$_} eq 'redhat' ) {
+                foreach my $rhel_deriv ('centos','scientific',) {
+                    $self->{'pattern'} = $version_match{$rhel_deriv};
+                    $self->{'release_file'}='redhat-release';
+                    if ( $self->_get_file_info() ) {
+                        $self->{'DISTRIB_ID'} = $rhel_deriv;
+                        $self->{'release_file'} = $_;
+                        return $self->{'DISTRIB_ID'};
                     }
-                    $self->{'pattern'}='';
                 }
-                $self->{'release_file'} = $_;
-                $self->{'DISTRIB_ID'} = $release_files{$_};
-                return $self->{'DISTRIB_ID'};
+                $self->{'pattern'}='';
             }
+            $self->{'release_file'} = $_;
+            $self->{'DISTRIB_ID'} = $release_files{$_};
+            return $self->{'DISTRIB_ID'};
         }
     }
     undef 
